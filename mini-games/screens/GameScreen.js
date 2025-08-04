@@ -1,6 +1,8 @@
 import { Alert, StyleSheet, Text, View } from "react-native";
 import { useEffect, useState } from "react";
 
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from "../components/ui/Title";
@@ -44,7 +46,7 @@ export default function GameScreen({ userNumber, onGameOver }) {
     } else {
       minBoundary = currentGuess + 1;
     }
-    console.log(maxBoundary, minBoundary);
+    // console.log(maxBoundary, minBoundary);
     const newRndNumber = generateRandomBetween(
       minBoundary,
       maxBoundary,
@@ -57,15 +59,23 @@ export default function GameScreen({ userNumber, onGameOver }) {
     <View style={styles.screen}>
       <Title>Oppent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
-      <Text>Higher or lower?</Text>
-      <View>
-        <PrimaryButton onPress={() => nextGuessHandler("greater")}>
-          +
-        </PrimaryButton>
-        <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
-          -
-        </PrimaryButton>
-      </View>
+      <Card>
+        <InstructionText style={{ marginBottom: 20 }}>
+          Higher or lower?
+        </InstructionText>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={() => nextGuessHandler("greater")}>
+              +
+            </PrimaryButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
+              -
+            </PrimaryButton>
+          </View>
+        </View>
+      </Card>
     </View>
   );
 }
@@ -73,17 +83,13 @@ export default function GameScreen({ userNumber, onGameOver }) {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    // padding: 26,
     paddingVertical: 42,
     paddingHorizontal: 24,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#ddb52f",
-    textAlign: "center",
-    borderWidth: 2,
-    borderColor: "#ddb52f",
-    padding: 12,
+  buttonsContainer: {
+    flexDirection: "row",
+  },
+  buttonContainer: {
+    flex: 1,
   },
 });

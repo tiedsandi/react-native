@@ -2,6 +2,7 @@ import { Alert, StyleSheet, Text, View } from "react-native";
 import { useEffect, useState } from "react";
 
 import Card from "../components/ui/Card";
+import Entypo from "@expo/vector-icons/Entypo";
 import InstructionText from "../components/ui/InstructionText";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
@@ -66,12 +67,12 @@ export default function GameScreen({ userNumber, onGameOver }) {
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
             <PrimaryButton onPress={() => nextGuessHandler("greater")}>
-              +
+              <Entypo name="minus" size={24} color="white" />
             </PrimaryButton>
           </View>
           <View style={styles.buttonContainer}>
             <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
-              -
+              <Entypo name="plus" size={24} color="white" />
             </PrimaryButton>
           </View>
         </View>

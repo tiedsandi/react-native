@@ -109,8 +109,8 @@ export default function GameScreen({ userNumber, onGameOver }) {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    paddingVertical: 42,
-    paddingHorizontal: 24,
+    padding: 24,
+    alignItems: "center",
   },
   buttonsContainer: {
     flexDirection: "row",

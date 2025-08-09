@@ -35,3 +35,17 @@ const styles = StyleSheet.create({
 
 
 ```
+
+## gunakan Dimension from react-native untuk ambil ukuran device
+
+```sh
+const deviceWidth = Dimensions.get("window").width;
+
+const styles = StyleSheet.create({
+  card: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: deviceWidth < 380 ? 18 : 36,
+  },
+});
+```

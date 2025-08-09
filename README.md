@@ -12,7 +12,7 @@ npx create-expo-app YourAppName --template blank
 
 ## setting dynamic width dengan max-widht dan widht
 
-```sh
+```jsx
 import { StyleSheet, Text } from "react-native";
 
 export default function Title({ children }) {
@@ -32,13 +32,11 @@ const styles = StyleSheet.create({
     width: 300,
   },
 });
-
-
 ```
 
 ## gunakan Dimension from react-native untuk ambil ukuran device
 
-```sh
+```jsx
 const deviceWidth = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
@@ -48,4 +46,24 @@ const styles = StyleSheet.create({
     marginTop: deviceWidth < 380 ? 18 : 36,
   },
 });
+```
+
+## setting sizes using useWindowDimensions
+
+```jsx
+import { useWindowDimensions } from "react-native";
+
+export default function StartGameScreen({ onPickNumber }) {
+  const [enteredNumber, setEnteredNumber] = useState("");
+
+  const { width, height } = useWindowDimensions();
+
+  const marginTopDistance = height < 400 ? 60 : 100;
+
+  return (
+    <View style={[styles.rootContainer, { marginTop: marginTopDistance }]}>
+      // ....
+    </View>
+  );
+}
 ```

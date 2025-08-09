@@ -67,3 +67,35 @@ export default function StartGameScreen({ onPickNumber }) {
   );
 }
 ```
+
+## Styling with platfrom
+
+```jsx
+import { Platform } from "react-native";
+
+const styles = StyleSheet.create({
+  title: {
+    // borderWidth: Platform.OS === "android" ? 2 : 0,
+    borderWidth: Platform.select({ ios: 0, android: 2 }),
+  },
+});
+```
+
+atau
+
+ubah tambahkan .android.js atau .ios.js
+importnya tetap nama filenya
+title.android.js
+title.ios.js
+
+```jsx
+import Title from "../components/ui/Title";
+```
+
+## untuk mengatur tema pakai status bar dark /light
+
+```jsx
+import { StatusBar } from "expo-status-bar";
+
+<StatusBar style="light" />;
+```
